@@ -5,40 +5,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Roles")
-public class RolesEntity {
+@Table(name = "Role")
+public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    private Integer Id;
+    private Integer id;
 
     @Column(name = "Name")
-    private String Name;
+    private String name;
 
-    @OneToMany(mappedBy = "Role")
-    private List<UsersEntity> users = new ArrayList<>();
+    @OneToMany(mappedBy = "role")
+    private List<UserEntity> users = new ArrayList<>();
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public List<UsersEntity> getUsers() {
+    public List<UserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UsersEntity> users) {
+    public void setUsers(List<UserEntity> users) {
         this.users = users;
     }
 }

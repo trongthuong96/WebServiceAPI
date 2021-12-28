@@ -10,28 +10,28 @@ public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    private Integer Id;
+    private Integer id;
 
     @Column(name = "Name")
-    private String Name;
+    private String name;
 
-    @OneToMany(mappedBy = "Status")
+    @OneToMany(mappedBy = "status")
     private List<StoryEntity> stories = new ArrayList<>();
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public List<StoryEntity> getStories() {

@@ -2,126 +2,153 @@ package com.kkqt.webserviceapi.dto;
 
 import com.kkqt.webserviceapi.entity.CategoryEntity;
 import com.kkqt.webserviceapi.entity.StatusEntity;
-import com.kkqt.webserviceapi.entity.UsersEntity;
+import com.kkqt.webserviceapi.entity.UserEntity;
 
 import java.sql.Timestamp;
 
 public class StoryDTO {
-    private Long Id;
-    private String Name;
-    private String SummaryContent;
-    private String Author;
-    private String Image;
-    private Integer Views;
-    private Integer Follow;
-    private boolean Hot;
-    private boolean Hide;
-    private Timestamp DateCreate;
-    private CategoryEntity Category;
-    private StatusEntity Status;
-    private UsersEntity User;
+    private Long id;
+    private String name;
+    private String summaryContent;
+    private String author;
+    private String image;
+    private Integer views;
+    private Integer follow;
+    private boolean hot;
+    private boolean hide;
+    private Timestamp dateCreate;
+    private Integer categoryId;
+    private Integer statusId;
+    private Long userId;
+    private String categoryName;
+    private String statusName;
+    private String userName;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSummaryContent() {
-        return SummaryContent;
+        return summaryContent;
     }
 
     public void setSummaryContent(String summaryContent) {
-        SummaryContent = summaryContent;
+        this.summaryContent = summaryContent;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
     public Integer getViews() {
-        return Views;
+        return views;
     }
 
     public void setViews(Integer views) {
-        Views = views;
+        this.views = views;
     }
 
     public Integer getFollow() {
-        return Follow;
+        return follow;
     }
 
     public void setFollow(Integer follow) {
-        Follow = follow;
+        this.follow = follow;
     }
 
     public boolean isHot() {
-        return Hot;
+        return hot;
     }
 
     public void setHot(boolean hot) {
-        Hot = hot;
+        this.hot = hot;
     }
 
     public boolean isHide() {
-        return Hide;
+        return hide;
     }
 
     public void setHide(boolean hide) {
-        Hide = hide;
+        this.hide = hide;
     }
 
     public Timestamp getDateCreate() {
-        return DateCreate;
+        return dateCreate;
     }
 
     public void setDateCreate(Timestamp dateCreate) {
-        DateCreate = dateCreate;
+        this.dateCreate = dateCreate;
     }
 
-    public CategoryEntity getCategory() {
-        return Category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(CategoryEntity category) {
-        Category = category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public StatusEntity getStatus() {
-        return Status;
+    public Integer getStatusId() {
+        return statusId;
     }
 
-    public void setStatus(StatusEntity status) {
-        Status = status;
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
     }
 
-    public UsersEntity getUser() {
-        return User;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(UsersEntity user) {
-        User = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

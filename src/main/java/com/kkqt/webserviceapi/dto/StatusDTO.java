@@ -1,9 +1,8 @@
 package com.kkqt.webserviceapi.dto;
 
-public class CategoryDTO{
+public class StatusDTO {
     private Integer id;
     private String name;
-    private String describes;
 
     public Integer getId() {
         return id;
@@ -19,13 +18,5 @@ public class CategoryDTO{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescribes() {
-        return describes;
-    }
-
-    public void setDescribes(String describes) {
-        this.describes = describes;
     }
 }

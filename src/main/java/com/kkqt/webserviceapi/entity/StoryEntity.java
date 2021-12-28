@@ -1,11 +1,12 @@
 package com.kkqt.webserviceapi.entity;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Story")
@@ -15,149 +16,185 @@ public class StoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    private Long Id;
+    private Long id;
 
     @Column(name = "Name")
-    private String Name;
+    private String name;
 
     @Column(name = "SummaryContent")
-    private String SummaryContent;
+    private String summaryContent;
 
     @Column(name = "Author")
-    private String Author;
+    private String author;
 
     @Column(name = "Image")
-    private String Image;
+    private String image;
 
-    @Column(name = "Views")
-    private Integer Views;
+    @Column(name = "Views", columnDefinition = "int default 0", nullable = false)
+    private Integer views;
 
-    @Column(name = "Follow")
-    private Integer Follow;
+    @Column(name = "Follow", columnDefinition = "int default 0", nullable = false)
+    private Integer follow;
 
-    @Column(name = "Hot")
-    private boolean Hot;
+    @Column(name = "Hot", columnDefinition = "boolean default false")
+    private boolean hot;
 
-    @Column(name = "Hide")
-    private boolean Hide;
+    @Column(name = "Hide", columnDefinition = "boolean default false")
+    private boolean hide;
 
     @Column(name = "DateCreate")
     @CreatedDate
-    private Timestamp DateCreate;
+    private Timestamp dateCreate;
 
     @ManyToOne
     @JoinColumn(name = "CategoryId")
-    private CategoryEntity Category;
+    private CategoryEntity category;
 
     @ManyToOne
     @JoinColumn(name = "StatusId")
-    private StatusEntity Status;
+    private StatusEntity status;
 
     @ManyToOne
     @JoinColumn(name = "UserId")
-    private UsersEntity User;
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "story")
+    private List<ChapterEntity> chapters = new ArrayList<>();
+
+    @OneToMany(mappedBy = "story")
+    private List<CommentEntity> comments = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "FollowStory",
+            joinColumns = @JoinColumn(name = "UserId"),
+            inverseJoinColumns = @JoinColumn(name = "StoryId"))
+    private List<StoryEntity> userFollow = new ArrayList<>();
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSummaryContent() {
-        return SummaryContent;
+        return summaryContent;
     }
 
     public void setSummaryContent(String summaryContent) {
-        SummaryContent = summaryContent;
+        this.summaryContent = summaryContent;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
     public Integer getViews() {
-        return Views;
+        return views;
     }
 
     public void setViews(Integer views) {
-        Views = views;
+        this.views = views;
     }
 
     public Integer getFollow() {
-        return Follow;
+        return follow;
     }
 
     public void setFollow(Integer follow) {
-        Follow = follow;
+        this.follow = follow;
     }
 
     public boolean isHot() {
-        return Hot;
+        return hot;
     }
 
     public void setHot(boolean hot) {
-        Hot = hot;
+        this.hot = hot;
     }
 
     public boolean isHide() {
-        return Hide;
+        return hide;
     }
 
     public void setHide(boolean hide) {
-        Hide = hide;
+        this.hide = hide;
     }
 
     public Timestamp getDateCreate() {
-        return DateCreate;
+        return dateCreate;
     }
 
     public void setDateCreate(Timestamp dateCreate) {
-        DateCreate = dateCreate;
+        this.dateCreate = dateCreate;
     }
 
     public CategoryEntity getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(CategoryEntity category) {
-        Category = category;
+        this.category = category;
     }
 
     public StatusEntity getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(StatusEntity status) {
-        Status = status;
+        this.status = status;
     }
 
-    public UsersEntity getUser() {
-        return User;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUser(UsersEntity user) {
-        User = user;
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public List<ChapterEntity> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<ChapterEntity> chapters) {
+        this.chapters = chapters;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    public List<StoryEntity> getUserFollow() {
+        return userFollow;
+    }
+
+    public void setUserFollow(List<StoryEntity> userFollow) {
+        this.userFollow = userFollow;
     }
 }

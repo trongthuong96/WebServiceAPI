@@ -1,6 +1,7 @@
 package com.kkqt.webserviceapi.api;
 
 import com.kkqt.webserviceapi.dto.CategoryDTO;
+import com.kkqt.webserviceapi.dto.DeleteDTO;
 import com.kkqt.webserviceapi.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class CategoryAPI {
     }
 
     @DeleteMapping(value = "/category")
-    public void DeleteCategory(@RequestBody int[] ids){
-        categoryService.delete(ids);
+    public void DeleteCategory(@RequestBody DeleteDTO model){
+        categoryService.delete(model.getCategoryIds());
     }
 }
