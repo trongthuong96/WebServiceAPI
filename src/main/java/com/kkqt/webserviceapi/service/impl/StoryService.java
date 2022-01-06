@@ -71,6 +71,34 @@ public class StoryService implements IStoryService {
         return listDto;
     }
 
+    // find story
+    @Override
+    public List<StoryDTO> findByCategoryId(Integer id) {
+        List<StoryEntity> list = storyRepository.findByCategoryId(id);
+        List<StoryDTO> listDto = new ArrayList<>();
+        for (StoryEntity i: list) {
+            StoryDTO storyDTO = new StoryDTO();
+            storyDTO = storyConverter.toDTO(i);
+            listDto.add(storyDTO);
+        }
+        return listDto;
+    }
+
+    // find story
+    @Override
+    public List<StoryDTO> findByNameOrAuthorOrSummaryContent(String name, String author, String summaryContent) {
+        List<StoryEntity> list = storyRepository.findByNameContainingOrAuthorContainingOrSummaryContentContaining(name, author, summaryContent);
+        List<StoryDTO> listDto = new ArrayList<>();
+        for (StoryEntity i: list) {
+            StoryDTO storyDTO = new StoryDTO();
+            storyDTO = storyConverter.toDTO(i);
+            listDto.add(storyDTO);
+        }
+        return listDto;
+    }
+
+
+    // delete Story
     @Override
     public void delete(long[] ids) {
         for(long item: ids){

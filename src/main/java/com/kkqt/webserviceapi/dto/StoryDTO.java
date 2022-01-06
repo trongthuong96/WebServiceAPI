@@ -23,6 +23,24 @@ public class StoryDTO {
     private String categoryName;
     private String statusName;
     private String userName;
+    private String nameChapterLast;
+    private Integer chapterNumberLast;
+
+    public String getNameChapterLast() {
+        return nameChapterLast;
+    }
+
+    public void setNameChapterLast(String nameChapterLast) {
+        this.nameChapterLast = nameChapterLast;
+    }
+
+    public Integer getChapterNumberLast() {
+        return chapterNumberLast;
+    }
+
+    public void setChapterNumberLast(Integer chapterNumberLast) {
+        this.chapterNumberLast = chapterNumberLast;
+    }
 
     public Long getId() {
         return id;

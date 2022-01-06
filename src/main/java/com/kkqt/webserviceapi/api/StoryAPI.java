@@ -1,9 +1,7 @@
 package com.kkqt.webserviceapi.api;
 
-import com.kkqt.webserviceapi.dto.CategoryDTO;
 import com.kkqt.webserviceapi.dto.DeleteDTO;
 import com.kkqt.webserviceapi.dto.StoryDTO;
-import com.kkqt.webserviceapi.service.ICategoryService;
 import com.kkqt.webserviceapi.service.IStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +16,17 @@ public class StoryAPI {
     private IStoryService storyService;
 
     @GetMapping(value = "/story")
-    public List<StoryDTO> GetStory(){
+    public List<StoryDTO> GetStory(@RequestParam(value = "theloai", defaultValue = "-1") Integer categoryId, @RequestParam(value = "tentruyen", defaultValue = "-1") String storyName, @RequestParam(value = "tacgia", defaultValue = "-1") String author, @RequestParam(value = "tomtat", defaultValue = "-1") String summary){
+
+        // find story with name, author, summary content
+        if (!(storyName.equals("-1") && author.equals("-1") &&  summary.equals("-1"))){
+            return storyService.findByNameOrAuthorOrSummaryContent(storyName, author, summary);
+
+        } // find story with categoryId
+        else if(categoryId != -1){
+            return storyService.findByCategoryId(categoryId);
+
+        } // find all
         return storyService.findAll();
     }
 
