@@ -15,8 +15,16 @@ public class StoryAPI {
     @Autowired
     private IStoryService storyService;
 
+    //show all
     @GetMapping(value = "/story")
-    public List<StoryDTO> GetStory(@RequestParam(value = "theloai", defaultValue = "-1") Integer categoryId, @RequestParam(value = "tentruyen", defaultValue = "-1") String storyName, @RequestParam(value = "tacgia", defaultValue = "-1") String author, @RequestParam(value = "tomtat", defaultValue = "-1") String summary){
+    public List<StoryDTO> GetStory(){
+        // find all
+        return storyService.findAll();
+    }
+
+    //search
+    @GetMapping(value = "/timkiem")
+    public List<StoryDTO> SearchStory(@RequestParam(value = "theloai", defaultValue = "-1") Integer categoryId, @RequestParam(value = "tentruyen", defaultValue = "-1") String storyName, @RequestParam(value = "tacgia", defaultValue = "-1") String author, @RequestParam(value = "tomtat", defaultValue = "-1") String summary){
 
         // find story with name, author, summary content
         if (!(storyName.equals("-1") && author.equals("-1") &&  summary.equals("-1"))){
@@ -27,7 +35,7 @@ public class StoryAPI {
             return storyService.findByCategoryId(categoryId);
 
         } // find all
-        return storyService.findAll();
+        return null;
     }
 
     @PostMapping(value = "/story")
