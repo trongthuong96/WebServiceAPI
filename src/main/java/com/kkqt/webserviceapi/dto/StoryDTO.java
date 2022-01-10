@@ -1,9 +1,5 @@
 package com.kkqt.webserviceapi.dto;
 
-import com.kkqt.webserviceapi.entity.CategoryEntity;
-import com.kkqt.webserviceapi.entity.StatusEntity;
-import com.kkqt.webserviceapi.entity.UserEntity;
-
 import java.sql.Timestamp;
 
 public class StoryDTO {

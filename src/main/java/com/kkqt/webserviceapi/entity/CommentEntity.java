@@ -1,11 +1,12 @@
 package com.kkqt.webserviceapi.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "Comment")
-public class CommentEntity {
+public class CommentEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")

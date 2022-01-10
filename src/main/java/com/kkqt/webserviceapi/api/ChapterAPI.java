@@ -25,8 +25,8 @@ public class ChapterAPI {
     }
 
     @PutMapping(value = "/chapter")
-    public ChapterDTO UpateChapter(@RequestBody ChapterDTO model){
-        return chapterService.save(model);
+    public ChapterDTO UpdateChapter(@RequestBody ChapterDTO model){
+        return chapterService.edit(model);
     }
 
     @DeleteMapping(value = "/chapter")

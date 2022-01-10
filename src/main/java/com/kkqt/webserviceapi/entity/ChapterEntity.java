@@ -10,15 +10,17 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "chapter")
 @EntityListeners(AuditingEntityListener.class)
+@IdClass(StoryKey.class)
 public class ChapterEntity{
-
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    private StoryEntity story;
 
     @Id
     @Column(name = "ChapterNumber")
     private Integer chapterNumber;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "StoryId")
+    private StoryEntity story;
 
     @Column(name = "Name")
     private String name;
@@ -36,6 +38,7 @@ public class ChapterEntity{
 
     @Column(name = "Views")
     private Integer views;
+
 
     public StoryEntity getStory() {
         return story;

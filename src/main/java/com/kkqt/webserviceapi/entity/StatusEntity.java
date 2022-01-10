@@ -1,12 +1,13 @@
 package com.kkqt.webserviceapi.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Status")
-public class StatusEntity {
+public class StatusEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IChapterService {
     ChapterDTO save(ChapterDTO dto);
+    ChapterDTO edit(ChapterDTO dto);
     List<ChapterDTO> findAll(Long storyId);
     public void delete(int[] chapterNumber, Long storyId);
 }

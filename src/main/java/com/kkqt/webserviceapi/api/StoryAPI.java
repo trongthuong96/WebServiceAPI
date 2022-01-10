@@ -34,7 +34,7 @@ public class StoryAPI {
         else if(categoryId != -1){
             return storyService.findByCategoryId(categoryId);
 
-        } // find all
+        }
         return null;
     }
 
