@@ -61,7 +61,7 @@ public class StoryService implements IStoryService {
     //show all story
     @Override
     public List<StoryDTO> findAll() {
-        List<StoryEntity> list = storyRepository.findAll();
+        List<StoryEntity> list = storyRepository.findAllByOrderByDateCreateDesc();
         List<StoryDTO> listDto = new ArrayList<>();
         for (StoryEntity i: list) {
             StoryDTO storyDTO = new StoryDTO();

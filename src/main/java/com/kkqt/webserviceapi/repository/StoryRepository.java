@@ -5,6 +5,7 @@ import com.kkqt.webserviceapi.entity.StoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -13,4 +14,5 @@ public interface StoryRepository extends JpaRepository<StoryEntity, Long> {
     List<StoryEntity> findByCategoryId(Integer category_id);
     List<StoryEntity> findByNameContainingOrAuthorContainingOrSummaryContentContaining(String name, String author, String summaryContent);
     boolean existsById(Long id);
+    List<StoryEntity> findAllByOrderByDateCreateDesc();
 }

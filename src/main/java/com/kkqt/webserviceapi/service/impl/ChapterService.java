@@ -37,10 +37,10 @@ public class ChapterService implements IChapterService {
         } else {
             ChapterEntity entity = new ChapterEntity();
             entity = chapterConverter.toEntity(dto);
+            entity.setViews(0);
             StoryEntity storyEntity = storyRepository.getById(dto.getStoryId());
             entity.setStory(storyEntity);
-            entity.setViews(0);
-           entity = chapterRepository.save(entity);
+            entity = chapterRepository.save(entity);
             return chapterConverter.toDTO(entity);
         }
     }
@@ -58,7 +58,7 @@ public class ChapterService implements IChapterService {
 
     @Override
     public List<ChapterDTO> findAll(Long storyId) {
-        List<ChapterEntity> entity = chapterRepository.findByStoryId(storyId);
+        List<ChapterEntity> entity = chapterRepository.findByStoryIdOrderByChapterNumberDesc(storyId);
         List<ChapterDTO> dtoList = new ArrayList<>();
         for(ChapterEntity i: entity){
             ChapterDTO dto = new ChapterDTO();
